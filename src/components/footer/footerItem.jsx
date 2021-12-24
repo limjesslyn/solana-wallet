@@ -1,7 +1,7 @@
-const FooterItem = ({icon}) => {
+const FooterItem = ({icon, onClick}) => {
     return (
-        <div>
-            <img src={icon}/>
+        <div className="h-100 items-center flex py-2">
+            <img src={icon} onClick={onClick}/>
         </div>
     )
 }
