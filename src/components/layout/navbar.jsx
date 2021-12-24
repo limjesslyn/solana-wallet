@@ -7,9 +7,9 @@ const Navbar = (props) => {
     return (
         <div className="p-3">
             <LeftSideNavbar>
-                <MenuItem name="Coins" icon={coinsIcon}/>
-                <MenuItem name="Collectibles" icon={nftIcon}/>
-                <MenuItem name="Sign Out" icon={signOutIcon}/>
+                <MenuItem to="/" name="Coins" icon={coinsIcon}/>
+                <MenuItem to="/nft" name="Collectibles" icon={nftIcon}/>
+                <MenuItem to="/sign-out" name="Sign Out" icon={signOutIcon}/>
             </LeftSideNavbar>
         </div>
     )
