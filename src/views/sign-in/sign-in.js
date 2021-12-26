@@ -1,6 +1,6 @@
 import './sign-in.css';
 
-const SignIn = ( ) => {
+const SignIn = () => {
     return (
         <div>
             This is Sign In
