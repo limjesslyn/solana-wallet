@@ -7,7 +7,6 @@ const Home = (props) => {
   return (
     <div>
       <Navbar/>
-      This is Home
       <Item/>
       <Footer/>
     </div>

@@ -1,0 +1,179 @@
+.itemLevel0 {
+    width: 18rem;
+    margin-top: 2.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+.itemLevel0 .imageContainer{
+    position: relative;
+    width: 12rem;
+    margin-right: 3rem;
+    margin-left: 3rem;
+    z-index: 10;
+}
+
+.itemLevel0 .imageContainer .image{
+    position: absolute;
+    width: 100%;
+    height: 12rem;
+    border-radius: 9999px;
+    background-color: rgb(100 100 100);
+    
+}
+
+.itemLevel0 .textContainer {
+    background-color: rgb(255 255 255);
+    box-shadow: 2px 4px 25px 0 rgb(208 75 255 / 1);
+    margin-top: 8rem;
+    z-index: 0;
+    height: 20rem;
+    position: relative;
+    border-radius: 1rem;
+}
+
+.itemLevel0 .textContainer .currency {
+    padding-top: 4rem;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.itemLevel0 .textContainer .coinName {
+    font-size: 1rem;
+    margin-top: -10px;
+}
+
+.itemLevel0 .textContainer .balance {
+    font-size: 1.5rem;
+    margin-top: 100px;
+}
+
+.itemLevel0 .textContainer .balanceValue {
+    font-size: 1rem;
+    margin-top: -10px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+
+
+
+
+.itemLevel1 {
+    width: 13.5rem;
+    margin-top: 6.25rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    filter: blur(1px)
+}
+.itemLevel1 .imageContainer{
+    position: relative;
+    width: 9rem;
+    margin-right: 2.25rem;
+    margin-left: 2.25rem;
+    z-index: 10;
+}
+
+.itemLevel1 .imageContainer .image{
+    position: absolute;
+    width: 100%;
+    height: 9rem;
+    border-radius: 9999px;
+    background-color: rgb(100 100 100);
+    
+}
+
+.itemLevel1 .textContainer {
+    background-color: rgb(255 255 255);
+    box-shadow: 2px 4px 20px 0 rgb(0 0 0 / 0.25);
+    margin-top: 6rem;
+    z-index: 0;
+    height: 15rem;
+    position: relative;
+    border-radius: 0.75rem;
+}
+
+.itemLevel1 .textContainer .currency {
+    padding-top: 3rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.itemLevel1 .textContainer .coinName {
+    font-size: 0.75rem;
+    margin-top: -7.5px;
+}
+
+.itemLevel1 .textContainer .balance {
+    font-size: 1.125rem;
+    margin-top: 75px;
+}
+
+.itemLevel1 .textContainer .balanceValue {
+    font-size: 0.75rem;
+    margin-top: -7.5px;
+    font-weight: bold;
+    font-size: 1.125rem;
+}
+
+
+
+
+
+
+
+
+
+.itemLevel2 {
+    width: 9rem;
+    margin-top: 10rem;
+    filter: blur(2px)
+}
+.itemLevel2 .imageContainer{
+    position: relative;
+    width: 6rem;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    z-index: 10;
+}
+
+.itemLevel2 .imageContainer .image{
+    position: absolute;
+    width: 100%;
+    height: 6rem;
+    border-radius: 9999px;
+    background-color: rgb(100 100 100);
+    
+}
+
+.itemLevel2 .textContainer {
+    background-color: rgb(255 255 255);
+    box-shadow: 2px 4px 15px 0 rgb(0 0 0/ 0.25);
+    margin-top: 4rem;
+    z-index: 0;
+    height: 10rem;
+    position: relative;
+    border-radius: 0.5rem;
+}
+
+.itemLevel2 .textContainer .currency {
+    padding-top: 2rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.itemLevel2 .textContainer .coinName {
+    font-size: 0.5rem;
+    margin-top: -5px;
+}
+
+.itemLevel2 .textContainer .balance {
+    font-size: 0.75rem;
+    margin-top: 50px;
+}
+
+.itemLevel2 .textContainer .balanceValue {
+    font-size: 0.5rem;
+    margin-top: -5px;
+    font-weight: bold;
+    font-size: 0.75rem;
+}
