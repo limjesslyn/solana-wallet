@@ -1,14 +1,15 @@
-import { Content, Contenttext } from "../navbar";
+import { Content, ContentText } from "../navbar";
 import Eth from "../../resources/eth.png";
 const Signcontent = (props) => {
     return (
-        <div ClassName="flex">
-            <Contenttext>
-                <p><b>Blockchain</b> is the<b> internet </b>
-                    of assets with the help of blockchain you can store your assets without telling your personal data.All you need is just set up your wallet</p>
-            </Contenttext>
+        <div className="flex">
+            <ContentText>
+                <p className="text-xl"><b>Blockchain</b> is the</p>
+                <p className="text-xl"><b>internet</b> of assets</p>
+                <p>With the help of blockchain you can store your assets without telling your personal data. All you need is just set up your wallet</p>
+            </ContentText>
             <Content>
-                <img ClassName="max-w-md" src={Eth} />
+                <img className="max-w-md" src={Eth} />
             </Content>
         </div>
 

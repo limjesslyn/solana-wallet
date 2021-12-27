@@ -1,6 +1,6 @@
 const Content = (props) => {
     return (
-        <div className="w-7/12 bg-white shadow-2xl rounded-3xl h-90 flex ml-auto ">
+        <div className="w-7/12 p-10 bg-white shadow-2xl rounded-l-3xl h-80 flex ml-auto ">
             {props.children}
         </div>
     )

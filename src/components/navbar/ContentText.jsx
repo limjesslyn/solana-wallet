@@ -1,8 +1,8 @@
-const Contenttext = (props) => {
+const ContentText = (props) => {
     return (
-        <div className="text-left flex w-1/12 ">
+        <div className="w-2/12 ml-20 place-self-end pb-10">
             {props.children}
         </div>
     )
 }
-export default Contenttext
+export default ContentText

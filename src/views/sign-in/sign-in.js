@@ -1,15 +1,14 @@
 import Sign from '../../components/layout/Sign-in';
-import Signinfoot from '../../components/layout/Sign-infoot';
-import Signcontent from '../../components/layout/Sign-inContent';
+import SignFoot from '../../components/layout/Sign-inFoot';
+import SignContent from '../../components/layout/Sign-inContent';
 import './sign-in.css';
 
 const SignIn = () => {
     return (
         <div>
             <Sign/>
-            This is Sign In
-            <Signcontent/>
-            <Signinfoot/>
+            <SignContent/>
+            <SignFoot/>
         </div>
     )
 }
