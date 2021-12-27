@@ -5,9 +5,9 @@ import './home.css';
 const Home = (props) => {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       This is Home
-      <Footer/>
+      <Footer />
     </div>
   );
 }

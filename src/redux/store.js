@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { authReducer } from './slice/auth';
+import authReducer from './slice/auth';
+import clusterReducer from './slice/cluster';
 
-export const store = configureStore({
+export default configureStore({
     reducer: {
         auth: authReducer,
+        cluster: clusterReducer,
     }
 });
