@@ -1,18 +1,53 @@
 #carousel {
+    width: 82rem;
+    position: relative;
     flex: content;
     justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .item{
-    transition: width 1s, margin-top 1s, margin-left 1s, margin-right 1s, filter 1s;
+    position: absolute;
+    transition: width 1s, height 1s, margin-top 1s, margin-left 1s, margin-right 1s, filter 1s, left 1s, z-index 1s;
+}
+.imageContainer {
+    transition: width 1s, margin-right 1s, margin-left 1s;
+}
+
+.imageContainer .image {
+    transition: height 1s;
+}
+
+.textContainer{
+    transition: height 1s, box-shadow 1s, margin-top 1s, border-radius 1s, ;
+}
+
+.textContainer .currency {
+    transition: padding-top 1s, font-size 1s;
+}
+
+.textContainer .coinName {
+    transition: margin-top 1s, font-size 1s;
+}
+
+.textContainer .balance {
+    transition: margin-top 1s, font-size 1s;
+}
+
+.textContainer .balanceValue {
+    transition: margin-top 1s, font-size 1s;
 }
 
 .level0 {
     width: 18rem;
+    height: 448px;
+    left: 50%;
     margin-top: 2.5rem;
-    margin-left: 0.5rem;
+    margin-left: -9rem;
     margin-right: 0.5rem;
-    filter:blur(0px)
+    filter:blur(0px);
+    z-index: 20;
 }
 .level0 .imageContainer{
     position: relative;
@@ -70,10 +105,13 @@
 
 .level1 {
     width: 13.5rem;
+    height: 388px;
+    left: 25%;
     margin-top: 6.25rem;
-    margin-left: 0.5rem;
+    margin-left: -3.375rem;
     margin-right: 0.5rem;
-    filter: blur(1px)
+    filter: blur(1px);
+    z-index: 10;
 }
 .level1 .imageContainer{
     position: relative;
@@ -134,9 +172,13 @@
 
 
 .level2 {
+    left: 12.5%;
+    height: 328px;
     width: 9rem;
     margin-top: 10rem;
-    filter: blur(2px)
+    margin-left: -1.125rem;
+    filter: blur(2px);
+    z-index: 0;
 }
 .level2 .imageContainer{
     position: relative;
@@ -194,11 +236,13 @@
 
 
 .level-1 {
+    left: 62.5%;
+    height: 388px;
     width: 13.5rem;
     margin-top: 6.25rem;
-    margin-left: 0.5rem;
     margin-right: 0.5rem;
-    filter: blur(1px)
+    filter: blur(1px);
+    z-index: 10;
 }
 .level-1 .imageContainer{
     position: relative;
@@ -259,9 +303,12 @@
 
 
 .level-2 {
+    left: 77.5%;
+    height: 328px;
     width: 9rem;
     margin-top: 10rem;
-    filter: blur(2px)
+    filter: blur(2px);
+    z-index: 0;
 }
 .level-2 .imageContainer{
     position: relative;
@@ -311,4 +358,42 @@
     margin-top: -5px;
     font-weight: bold;
     font-size: 0.75rem;
+}
+
+
+.left-enter {
+    opacity: 0;
+}
+
+.left-enter.left-enter-active {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.left-exit {
+    opacity: 1;
+}
+
+.left-exit.left-exit-active {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.right-enter {
+    opacity: 0;
+
+}
+
+.right-enter.right-enter-active {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.right-exit {
+    opacity: 1;
+}
+
+.right-exit.right-exit-active {
+    opacity: 0;
+    transition: opacity 1s;
 }

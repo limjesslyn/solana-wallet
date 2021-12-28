@@ -23,7 +23,7 @@ const Carousel = (props) =>{
             level = active - i
             console.log(level)
             itemList.push(
-            <CSSTransition key={index} classNames={direction} timeout={{ enter: 500, exit: 300 }}>
+            <CSSTransition key={index} classNames={direction} timeout={{ enter: 500, exit: 500 }}>
                  <HomeItem key={index} id={items[index]} level={level} />
             </CSSTransition>
             )
@@ -48,12 +48,12 @@ const Carousel = (props) =>{
     const leftClick = moveLeft.bind(Carousel)
     
     return(
-        <div id="carousel" className="noselect">
-            <div className="arrow arrow-left" onClick={leftClick}><img src={leftIcon}/></div>
-            <div className="arrow arrow-right" onClick={rightClick}><img src={rightIcon}/></div>
+        <div id="carousel">
             <TransitionGroup className="flex justify-center"> 
                 {generateItems()}
             </TransitionGroup>
+            <div className="arrow arrow-left" onClick={leftClick}><img src={leftIcon}/></div>
+            <div className="arrow arrow-right" onClick={rightClick}><img src={rightIcon}/></div>
         </div>
     )
 }
