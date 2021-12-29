@@ -1,10 +1,11 @@
 import HomeItem from "../home-item/homeItem";
-import styling from "../../views/home/home.css"
 import { useState } from "react";
 import {TransitionGroup} from "react-transition-group"
 import { CSSTransition } from "react-transition-group";
 import leftIcon from "../../resources/arrow-back.svg"
 import rightIcon from "../../resources/arrow-forward.svg"
+import NFTItem from "../nft-item/nftItem";
+
 const Carousel = (props) =>{
     const [active, setActive] = useState(props.active)
     const [items, setItems] = useState(props.items)
@@ -22,11 +23,21 @@ const Carousel = (props) =>{
             }
             level = active - i
             console.log(level)
-            itemList.push(
-            <CSSTransition key={index} classNames={direction} timeout={{ enter: 500, exit: 500 }}>
-                 <HomeItem key={index} id={items[index]} level={level} />
-            </CSSTransition>
-            )
+            if(props.elementName === 'HomeItem'){
+                itemList.push(
+                    <CSSTransition key={index} classNames={direction} timeout={{ enter: 1000, exit: 1000 }}>
+                         <HomeItem key={index} id={items[index]} level={level} />
+                    </CSSTransition>
+                )
+            }
+            if(props.elementName === 'NFTItem'){
+                itemList.push(
+                    <CSSTransition key={index} classNames={direction} timeout={{ enter: 1000, exit: 1000 }}>
+                         <NFTItem key={index} id={items[index]} level={level} />
+                    </CSSTransition>
+                )
+            }
+           
         }
         return itemList
     }
@@ -48,7 +59,7 @@ const Carousel = (props) =>{
     const leftClick = moveLeft.bind(Carousel)
     
     return(
-        <div id="carousel">
+        <div className="carousel">
             <TransitionGroup className="flex justify-center"> 
                 {generateItems()}
             </TransitionGroup>

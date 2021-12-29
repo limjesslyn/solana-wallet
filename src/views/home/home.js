@@ -8,7 +8,7 @@ const Home = (props) => {
   return (
     <div>
       <Navbar/>
-      <Carousel items={items} active={0}/>
+      <Carousel elementName={'HomeItem'} items={items} active={0}/>
       <Footer/>
     </div>
   );
