@@ -48,7 +48,7 @@ const Carousel = (props) =>{
     const leftClick = moveLeft.bind(Carousel)
     
     return(
-        <div id="carousel">
+        <div id="carousel" className="z-0">
             <TransitionGroup className="flex justify-center"> 
                 {generateItems()}
             </TransitionGroup>

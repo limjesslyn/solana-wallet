@@ -2,7 +2,7 @@ import sendIcon from  "../../resources/send.svg";
 import underline from  "../../resources/underline.svg";
 const SendModal = (props) => {
     return(
-        <div id="modal" className="modalContainer w-full">    
+        <div id="modal" className="modalContainer w-full z-50">    
             <a href="#" className="btn btn-success">open modal</a> 
             <div id="my-modal" className="modal-open justify-center flex">
                 <div className="modal-box max-w-screen-md">
