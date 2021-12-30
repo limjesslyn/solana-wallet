@@ -397,3 +397,8 @@
     opacity: 0;
     transition: opacity 1s;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+#modal{
+    font-family: 'Gloria Hallelujah', cursive;
+}
