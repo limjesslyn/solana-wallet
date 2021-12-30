@@ -4,7 +4,13 @@ import Carousel from '../../components/layout/carousel';
 import './nft.css';
 
 const NFT = (props) => {
-    var items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    var items = ['IU Sketch', 'IU Sketch 2', 'IU Sketch 3']
+    var length = items.length
+    if(length < 5){
+      for(var i = 0; i < length; i++){
+        items.push(items[i])
+      }
+    }
     return (
       <div>
         <Navbar/>

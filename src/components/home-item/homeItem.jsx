@@ -1,4 +1,3 @@
-import '../../views/home/home.css';
 const HomeItem = (props) => {
     var className = 'item level' + props.level
     return(

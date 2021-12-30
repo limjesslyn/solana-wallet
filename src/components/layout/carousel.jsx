@@ -8,7 +8,6 @@ import NFTItem from "../nft-item/nftItem";
 
 const Carousel = (props) =>{
     const [active, setActive] = useState(props.active)
-    const [items, setItems] = useState(props.items)
     const [direction, setDirection] = useState('')
     
     const generateItems = () => {
@@ -17,27 +16,26 @@ const Carousel = (props) =>{
         for (var i = active - 2; i < active + 3; i++) {
             var index = i
             if (i < 0) {
-                index = items.length + i
-            } else if (i >= items.length) {
-                index = i % items.length
+                index = props.items.length + i
+            } else if (i >= props.items.length) {
+                index = i % props.items.length
             }
+            console.log(index)
             level = active - i
-            console.log(level)
             if(props.elementName === 'HomeItem'){
                 itemList.push(
                     <CSSTransition key={index} classNames={direction} timeout={{ enter: 1000, exit: 1000 }}>
-                         <HomeItem key={index} id={items[index]} level={level} />
+                         <HomeItem key={index} id={props.items[index]} level={level} />
                     </CSSTransition>
                 )
             }
             if(props.elementName === 'NFTItem'){
                 itemList.push(
                     <CSSTransition key={index} classNames={direction} timeout={{ enter: 1000, exit: 1000 }}>
-                         <NFTItem key={index} id={items[index]} level={level} />
+                         <NFTItem key={index} id={props.items[index]} level={level} />
                     </CSSTransition>
                 )
             }
-           
         }
         return itemList
     }
@@ -45,13 +43,13 @@ const Carousel = (props) =>{
     const moveLeft = () => {
         var newActive = active
         newActive--
-        setActive(newActive < 0 ? items.length - 1 : newActive)
+        setActive(newActive < 0 ? props.items.length - 1 : newActive)
         setDirection('left')
     }
     
     const moveRight = () => {
         var newActive = active
-        setActive((newActive + 1) % items.length)
+        setActive((newActive + 1) % props.items.length)
         setDirection('right')
     }
 
@@ -59,7 +57,7 @@ const Carousel = (props) =>{
     const leftClick = moveLeft.bind(Carousel)
     
     return(
-        <div className="carousel">
+        <div id="carousel">
             <TransitionGroup className="flex justify-center"> 
                 {generateItems()}
             </TransitionGroup>
