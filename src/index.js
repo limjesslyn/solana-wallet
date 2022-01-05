@@ -7,6 +7,7 @@ import './index.css';
 import App from './App';
 import Home from './views/home/home';
 import SignIn from './views/sign-in/sign-in';
+import NFT from './views/nft/nft';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -17,6 +18,7 @@ ReactDOM.render(
           <Routes>
             <Route exact path="/" element={<Home/>} />
             <Route exact path="/sign-in" element={<SignIn/>} />
+            <Route exact path="/nft" element={<NFT/>} />
             <Route path="*" element={<div>404 Not found</div>} />
           </Routes>
         </App>
