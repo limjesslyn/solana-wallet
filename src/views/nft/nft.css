@@ -1,0 +1,396 @@
+.carousel {
+    width: 82rem;
+    position: relative;
+    flex: content;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.item{
+    position: absolute;
+    transition: width 1s, height 1s, margin-top 1s, margin-left 1s, margin-right 1s, filter 1s, left 1s, z-index 1s;
+}
+
+.hide{
+    opacity: 0;
+    transition: opacity 500ms;
+}
+
+.description::-webkit-scrollbar {
+    display: none;
+}
+
+.description {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.nftContainer{
+    transition: height 1s, box-shadow 1s, border-radius 1s, margin-top 1s;
+}
+
+.nftContainer:hover .hide{
+    opacity: 1;
+    transition: opacity 500ms;
+}
+
+.nftLevel0 {
+    width: 22rem;
+    height: 22rem;
+    left: 50%;
+    margin-top: 2.5rem;
+    margin-left: -11rem;
+    margin-right: 0.5rem;
+    filter:blur(0px);
+    z-index: 20;
+}
+
+.nftLevel0 .nftContainer {
+    background-color: rgb(255 255 255);
+    box-shadow: 2px 4px 25px 0 rgb(208 75 255 / 1);
+    z-index: 0;
+    height: 22rem;
+    position: relative;
+    border-radius: 1rem;
+}
+
+.nftLevel0 .nftContainer .image {
+    position: absolute;
+    border-radius: 1rem;
+}
+
+.nftLevel0 .nftContainer .detailsContainer {
+    height: 10rem;
+    width: 22rem;
+    z-index: 10;
+    position: absolute;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    background-image: linear-gradient(to bottom,rgba(255,0,0,0),rgba(170,20,223,0.75), rgba(163,15,216,1));
+    bottom: 0;
+}
+
+.nftLevel0 .nftContainer .detailsContainer .title {
+    padding-top: 2rem;
+    padding-left: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 5px 6px #000000;
+    color:rgb(255 255 255);
+    position: relative;
+}
+
+.nftLevel0 .nftContainer .detailsContainer .description {
+    margin-top: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    line-height: 1rem;
+    font-size: 1rem;
+    font-weight: lighter;
+    max-height: 3rem;
+    overflow-y: scroll;
+    color:rgb(255 255 255);
+    position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+.nftLevel1 {
+    width: 16.5rem;
+    height: 16.5rem;
+    left: 15%;
+    margin-top: 6.25rem;
+    margin-left: 0rem;
+    margin-right: 0.5rem;
+    filter: blur(1px);
+    z-index: 10;
+}
+
+.nftLevel1 .nftContainer {
+    background-color: rgb(255 255 255);
+    box-shadow: 2px 4px 20px 0 rgb(0 0 0 / 0.25);
+    z-index: 0;
+    height: 16.5rem;
+    position: relative;
+    border-radius: 0.75rem;
+}
+
+.nftLevel1 .nftContainer .image {
+    position: absolute;
+    border-radius: 0.75rem;
+}
+
+.nftLevel1 .nftContainer .detailsContainer {
+    height: 7.5rem;
+    width: 16.5rem;
+    z-index: 10;
+    position: absolute;
+    border-bottom-right-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
+    background-image: linear-gradient(to bottom,rgba(255,0,0,0),rgba(50,50,50,0.75), rgba(0,0,0,1));
+    bottom: 0;
+}
+
+.nftLevel1 .nftContainer .detailsContainer .title {
+    padding-top: 1.125rem;
+    padding-left: 1.125rem;
+    font-size: 1.125rem;
+    font-weight: bold;
+    text-shadow: 1px 5px 6px #000000;
+    color:rgb(255 255 255);
+    position: relative;
+}
+
+.nftLevel1 .nftContainer .detailsContainer .description {
+    margin-top: 0.5625rem;
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+    line-height: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: lighter;
+    max-height: 2.25rem;
+    overflow-y: scroll;
+    color:rgb(255 255 255);
+    position: relative;
+}
+
+
+
+
+
+.nftLevel2 {
+    left: 2.5%;
+    height: 11rem;
+    width: 11rem;
+    margin-top: 10rem;
+    margin-left: 0rem;
+    filter: blur(2px);
+    z-index: 0;
+}
+
+.nftLevel2 .nftContainer {
+    background-color: rgb(255 255 255);
+    box-shadow: 2px 4px 20px 0 rgb(0 0 0 / 0.25);
+    z-index: 0;
+    height: 11rem;
+    position: relative;
+    border-radius: 1rem;
+}
+
+.nftLevel2 .nftContainer .image {
+    position: absolute;
+    border-radius: 0.5rem;
+}
+
+.nftLevel2 .nftContainer .detailsContainer {
+    height: 5rem;
+    width: 11rem;
+    z-index: 10;
+    position: absolute;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    background-image: linear-gradient(to bottom,rgba(255,0,0,0),rgba(50,50,50,0.75), rgba(0,0,0,1));
+    bottom: 0;
+}
+
+.nftLevel2 .nftContainer .detailsContainer .title {
+    padding-top: 1rem;
+    padding-left: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-shadow: 1px 5px 6px #000000;
+    color:rgb(255 255 255);
+    position: relative;
+}
+
+.nftLevel2 .nftContainer .detailsContainer .description {
+    margin-top: 0.375rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    line-height: 0.5rem;
+    font-size: 0.5rem;
+    font-weight: lighter;
+    max-height: 1.5rem;
+    overflow-y: scroll;
+    color:rgb(255 255 255);
+    position: relative;
+}
+
+
+
+
+
+
+
+.nftLevel-1 {
+    left: 65%;
+    height: 16.5rem;
+    width: 16.5rem;
+    margin-top: 6.25rem;
+    margin-right: 0.5rem;
+    filter: blur(1px);
+    z-index: 10;
+}
+
+.nftLevel-1 .nftContainer {
+    background-color: rgb(255 255 255);
+    box-shadow: 2px 4px 20px 0 rgb(0 0 0 / 0.25);
+    z-index: 0;
+    height: 16.5rem;
+    position: relative;
+    border-radius: 0.75rem;
+}
+
+.nftLevel-1 .nftContainer .image {
+    position: absolute;
+    border-radius: 0.75rem;
+}
+
+.nftLevel-1 .nftContainer .detailsContainer {
+    height: 7.5rem;
+    width: 16.5rem;
+    z-index: 10;
+    position: absolute;
+    border-bottom-right-radius: 0.75rem;
+    border-bottom-left-radius: 0.75rem;
+    background-image: linear-gradient(to bottom,rgba(255,0,0,0),rgba(50,50,50,0.75), rgba(0,0,0,1));
+    bottom: 0;
+}
+
+.nftLevel-1 .nftContainer .detailsContainer .title {
+    padding-top: 1.125rem;
+    padding-left: 1.125rem;
+    font-size: 1.125rem;
+    font-weight: bold;
+    text-shadow: 1px 5px 6px #000000;
+    color:rgb(255 255 255);
+    position: relative;
+}
+
+.nftLevel-1 .nftContainer .detailsContainer .description {
+    margin-top: 0.5625rem;
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+    line-height: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: lighter;
+    max-height: 2.25rem;
+    overflow-y: scroll;
+    color:rgb(255 255 255);
+    position: relative;
+}
+
+
+
+
+
+
+
+
+
+.nftLevel-2 {
+    left: 85%;
+    height: 11rem;
+    width: 11rem;
+    margin-top: 10rem;
+    filter: blur(2px);
+    z-index: 0;
+}
+
+.nftLevel-2 .nftContainer {
+    background-color: rgb(255 255 255);
+    box-shadow: 2px 4px 20px 0 rgb(0 0 0 / 0.25);
+    z-index: 0;
+    height: 11rem;
+    position: relative;
+    border-radius: 1rem;
+}
+
+.nftLevel-2 .nftContainer .image {
+    position: absolute;
+    border-radius: 0.5rem;
+}
+
+.nftLevel-2 .nftContainer .detailsContainer {
+    height: 5rem;
+    width: 11rem;
+    z-index: 10;
+    position: absolute;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    background-image: linear-gradient(to bottom,rgba(255,0,0,0),rgba(50,50,50,0.75), rgba(0,0,0,1));
+    bottom: 0;
+}
+
+.nftLevel-2 .nftContainer .detailsContainer .title {
+    padding-top: 1rem;
+    padding-left: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-shadow: 1px 5px 6px #000000;
+    color:rgb(255 255 255);
+    position: relative;
+}
+
+.nftLevel-2 .nftContainer .detailsContainer .description {
+    margin-top: 0.375rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    line-height: 0.5rem;
+    font-size: 0.5rem;
+    font-weight: lighter;
+    max-height: 1.5rem;
+    overflow-y: scroll;
+    color:rgb(255 255 255);
+    position: relative;
+}
+
+
+
+
+
+
+.left-enter {
+    opacity: 0;
+}
+
+.left-enter.left-enter-active {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.left-exit {
+    opacity: 1;
+}
+
+.left-exit.left-exit-active {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.right-enter {
+    opacity: 0;
+
+}
+
+.right-enter.right-enter-active {
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.right-exit {
+    opacity: 1;
+}
+
+.right-exit.right-exit-active {
+    opacity: 0;
+    transition: opacity 1s;
+}

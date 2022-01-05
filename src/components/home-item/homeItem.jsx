@@ -1,6 +1,3 @@
-import styling from "../../views/home/home.css"
-import { useState } from "react";
-
 const HomeItem = (props) => {
     var className = 'item level' + props.level
     return(
