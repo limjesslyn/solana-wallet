@@ -8,6 +8,7 @@ import saveIcon from "../../resources/save.svg";
 import SendModal from "./sendModal";
 
 const Footer = (props) => {
+
     return (
         <div className="p-10 flex w-full absolute bottom-0">
             <FloatingItemButton onClick={() => {
@@ -17,8 +18,8 @@ const Footer = (props) => {
                 }
             }} icon={sendIcon} />
             <FooterBar>
-                <FooterItem icon={leftIcon} />
-                <FooterItem icon={rightIcon} />
+                <FooterItem onClick={props.onClickPrevious} icon={leftIcon} />
+                <FooterItem onClick={props.onClickNext} icon={rightIcon} />
             </FooterBar>
             <FloatingItemButton icon={saveIcon} />
             <SendModal />

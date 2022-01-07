@@ -1,9 +1,8 @@
 const HomeItem = (props) => {
-    var className = 'item level' + props.level
-    return(
-        <div className={className}>
+    return (
+        <div className={'item level' + props.level}>
             <div className="imageContainer">
-                <img className="image"/>
+                <img className="image" />
             </div>
             <div className="textContainer text-center">
                 <p className="currency">{props.id}</p>
