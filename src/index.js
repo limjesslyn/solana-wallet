@@ -9,6 +9,8 @@ import Home from './views/home/home';
 import SignIn from './views/sign-in/sign-in';
 import NFT from './views/nft/nft';
 import reportWebVitals from './reportWebVitals';
+import SignOut from './views/sign-out/sign-out';
+import RequireAuth from './components/auth/requireAuth';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,9 +18,10 @@ ReactDOM.render(
       <Provider store={store}>
         <App>
           <Routes>
-            <Route exact path="/" element={<Home/>} />
-            <Route exact path="/sign-in" element={<SignIn/>} />
-            <Route exact path="/nft" element={<NFT/>} />
+            <Route exact path="/" element={<RequireAuth><Home /></RequireAuth>} />
+            <Route exact path="/nft" element={<RequireAuth><NFT /></RequireAuth>} />
+            <Route exact path="/sign-in" element={<SignIn />} />
+            <Route exact path="/sign-out" element={<SignOut />} />
             <Route path="*" element={<div>404 Not found</div>} />
           </Routes>
         </App>

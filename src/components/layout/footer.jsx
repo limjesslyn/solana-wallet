@@ -8,7 +8,6 @@ import saveIcon from "../../resources/save.svg";
 import SendModal from "./sendModal";
 
 const Footer = (props) => {
-
     return (
         <div className="p-10 flex w-full absolute bottom-0">
             <FloatingItemButton onClick={() => {

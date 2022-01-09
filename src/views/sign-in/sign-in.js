@@ -6,9 +6,9 @@ import './sign-in.css';
 const SignIn = () => {
     return (
         <div>
-            <Sign/>
-            <SignContent/>
-            <SignFoot/>
+            <Sign />
+            <SignContent />
+            <SignFoot />
         </div>
     )
 }

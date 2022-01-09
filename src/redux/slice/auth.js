@@ -2,16 +2,23 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const authReducer = createSlice({
     name: 'auth',
-    initialState: 11,
+    initialState: {
+        isLogin: localStorage.getItem("phrase") !== "" && localStorage.getItem("phrase") !== null,
+        phrase: localStorage.getItem("phrase")
+    },
     reducers: {
-        setAuth(state, action) {
-            return (state = action.payload);
+        setLogin(state, action) {
+            state.isLogin = action.payload;
+        },
+        setPhrase(state, action) {
+            state.phrase = action.payload;
         },
     },
 });
 
-export const getAuth = (state) => state.auth;
+export const getLogin = (state) => state.isLogin;
+export const getPhrase = (state) => state.phrase;
 
-export const { setAuth } = authReducer.actions;
+export const { setPhrase, setLogin } = authReducer.actions;
 
 export default authReducer.reducer;

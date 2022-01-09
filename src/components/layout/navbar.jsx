@@ -2,8 +2,14 @@ import { LeftSideNavbar, RightSideNavbar, MenuItem, Profile } from "../navbar";
 import coinsIcon from "../../resources/coins.svg"
 import nftIcon from "../../resources/nft.svg"
 import signOutIcon from "../../resources/sign-out.svg"
+import { useDispatch } from "react-redux";
+import { setPhrase } from "../../redux/slice/auth";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Navbar = (props) => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     return (
         <div className="flex p-3">
             <LeftSideNavbar>
