@@ -11,4 +11,9 @@ module.exports = {
   daisyui: {
     themes: false,
   },
+  variants: {
+    extend: {
+      grayscale: ['hover'],
+    }
+  },
 }
