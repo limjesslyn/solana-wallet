@@ -10,7 +10,7 @@ const Home = (props) => {
   const tokenIndex = useSelector(state => state.token.index)
   const dispatch = useDispatch()
 
-  var items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  var items = [1, 2, 3, 4, 5, 6]
   var length = items.length
   if (length < 5) {
     for (var i = 0; i < length; i++) {

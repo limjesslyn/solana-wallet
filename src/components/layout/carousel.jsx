@@ -24,7 +24,7 @@ const Carousel = ({ active, direction, items, elementName }) => {
             if (elementName === 'NFTItem') {
                 itemList.push(
                     <CSSTransition key={index} classNames={direction} timeout={{ enter: 1000, exit: 1000 }}>
-                        <NFTItem key={index} id={items[index]} level={level} />
+                        <NFTItem key={index} metadata={items[index]} level={level} />
                     </CSSTransition>
                 )
             }

@@ -14,7 +14,10 @@ const DropdownCluster = (props) => {
                     ClustersNetwork.map(el => {
                         return (
                             <li key={el}>
-                                <a className={clusterNetwork === el ? "active" : ""} onClick={() => dispatch(setCluster(el))}>{el}</a>
+                                <a className={clusterNetwork === el ? "active" : ""} onClick={() => {
+                                    dispatch(setCluster(el))
+                                    localStorage.setItem("cluster", el)
+                                }}>{el}</a>
                             </li>
                         )
                     })
