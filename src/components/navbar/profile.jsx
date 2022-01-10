@@ -2,12 +2,14 @@ import { DropdownCluster } from '.'
 import { ShortenAddress } from '../../utils/wallet'
 import dropdownIcon from "../../resources/dropdown.svg"
 
-const Profile = ({ image, address }) => {
+const Profile = ({ image, address, cluster }) => {
     return (
         <div className="flex px-2 w-full justify-around items-center">
             <DropdownCluster>
                 <span tabIndex="0" className="border-none hover:cursor-pointer flex">
-                    {ShortenAddress(address)}
+                    <div className='flex flex-col mr-2'>
+                    {ShortenAddress(address)}<small>{cluster}</small>
+                    </div>
                     <img src={dropdownIcon} />
                 </span>
             </DropdownCluster>

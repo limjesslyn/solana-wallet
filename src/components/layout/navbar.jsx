@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = (props) => {
     const auth = useSelector(state => state.auth);
+    const network = useSelector(state => state.cluster.network);
 
     return (
         <div className="flex p-3">
@@ -16,7 +17,7 @@ const Navbar = (props) => {
                 <MenuItem to="/sign-out" name="Sign Out" icon={signOutIcon} />
             </LeftSideNavbar>
             <RightSideNavbar>
-                <Profile image="https://i.pinimg.com/736x/19/3f/88/193f8815fbe4b057783f9fb2b28845c3.jpg" address={Secret2Keypair(SecretString2Secret(auth.secret)).publicKey.toBase58()} />
+                <Profile image="https://i.pinimg.com/736x/19/3f/88/193f8815fbe4b057783f9fb2b28845c3.jpg" cluster={network} address={Secret2Keypair(SecretString2Secret(auth.secret)).publicKey.toBase58()} />
             </RightSideNavbar>
         </div>
     )
