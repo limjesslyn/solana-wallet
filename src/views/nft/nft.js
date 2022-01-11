@@ -58,6 +58,14 @@ const NFT = (props) => {
         <br>Address: ${mint}`
       })
     }
+    var baseNftCount = nftItems.length
+    var length = baseNftCount
+    while(length < 5){
+      for (var i = 0; i < baseNftCount; i++) {
+        nftItems.push(nftItems[i])
+      }
+      length = length + baseNftCount
+    }
     setNftList(nftItems)
   }, [connection]);
 
