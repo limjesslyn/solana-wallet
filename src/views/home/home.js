@@ -58,15 +58,15 @@ const Home = (props) => {
         balance: tokenAccounts[i]?.account?.data?.parsed?.info?.tokenAmount?.uiAmount
       })
     }
-    var baseTokenCount = tokenItems.length
-    var length = baseTokenCount
-    while(length < 5){
-      for (var i = 0; i < baseTokenCount; i++) {
-        tokenItems.push(tokenItems[i])
-      }
-      length = length + baseTokenCount
-    }
 
+    if(tokenItems.length > 0) {
+      let originalLength = tokenItems.length;
+      while(tokenItems.length < 5) {
+        for (let i = 0; i < originalLength; i++) {
+          tokenItems.push(tokenItems[i])
+        }
+      }
+    }
     setTokenList(tokenItems)
   }, [connection]);
 
