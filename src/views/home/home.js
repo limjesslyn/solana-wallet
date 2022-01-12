@@ -60,9 +60,17 @@ const Home = (props) => {
         })
       }
 
+      const sol = await connection.getBalance(keypair.publicKey);
+      tokenItems.push({
+        img: "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png",
+        title: "Solana",
+        symbol: "SOL",
+        balance: sol / 1e9,
+      })
+
       if (tokenItems.length > 0) {
         let originalLength = tokenItems.length;
-        while (tokenItems.length < 5) {
+        while (tokenItems.length <= 5) {
           for (let i = 0; i < originalLength; i++) {
             tokenItems.push(tokenItems[i])
           }

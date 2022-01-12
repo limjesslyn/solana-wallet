@@ -62,7 +62,7 @@ const NFT = (props) => {
 
       if (nftItems.length > 0) {
         let originalLength = nftItems.length;
-        while (nftItems.length < 5) {
+        while (nftItems.length <= 5) {
           for (let i = 0; i < originalLength; i++) {
             nftItems.push(nftItems[i])
           }
