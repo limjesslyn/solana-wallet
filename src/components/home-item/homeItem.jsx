@@ -8,7 +8,7 @@ const HomeItem = (props) => {
                 <p className="currency">{props.metadata.symbol}</p>
                 <p className="coinName">{props.metadata.title}</p>
                 <p className="balance">Balance</p>
-                <p className="balanceValue">{props.metadata.balance}</p>
+                <p className="balanceValue">{props.metadata.balance.toLocaleString()}</p>
             </div>
         </div>
     )

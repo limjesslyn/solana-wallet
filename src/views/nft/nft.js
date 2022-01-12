@@ -56,7 +56,8 @@ const NFT = (props) => {
           img: imgURI,
           title: tokenMetadata.data.data.name,
           desc: `Symbol: ${tokenMetadata.data.data.symbol}
-          <br>Address: ${mint}`
+          <br>Address: ${mint}
+          <br>Amount: ${nftAccounts[i]?.account?.data?.parsed?.info?.tokenAmount?.uiAmount}`
         })
       }
 
