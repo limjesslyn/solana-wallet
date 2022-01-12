@@ -15,7 +15,7 @@ const SignOut = () => {
                 replace: true
             })
         }, 1000)
-    }, [])
+    })
 
     return (
         <div>
