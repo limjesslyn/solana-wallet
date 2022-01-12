@@ -18,7 +18,6 @@ const NFT = (props) => {
   const nftIndex = useSelector(state => state.nft.index)
   const network = useSelector(state => state.cluster.network)
   const dispatch = useDispatch()
-  const keypair = Secret2Keypair(SecretString2Secret(auth.secret))
 
   const [nftList, setNftList] = useState([])
   const [connection, setConnection] = useState(new Connection(clusterApiUrl(GetClusterUrl(network))))
@@ -29,6 +28,7 @@ const NFT = (props) => {
 
   useEffect(() => {
     const fetchNft = async () => {
+      const keypair = Secret2Keypair(SecretString2Secret(auth.secret))
       const nfts = await connection.getParsedTokenAccountsByOwner(keypair.publicKey, {
         programId: TOKEN_PROGRAM_ID,
       })
@@ -72,7 +72,7 @@ const NFT = (props) => {
     }
 
     fetchNft()
-  }, [connection, keypair.publicKey]);
+  }, [connection, auth.secret]);
 
   const moveLeft = () => {
     dispatch(setIndex(nftIndex - 1 < 0 ? nftList.length - 1 : nftIndex - 1))

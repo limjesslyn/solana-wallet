@@ -18,7 +18,6 @@ const Home = (props) => {
   const tokenIndex = useSelector(state => state.token.index)
   const network = useSelector(state => state.cluster.network)
   const dispatch = useDispatch()
-  const keypair = Secret2Keypair(SecretString2Secret(auth.secret))
 
   const [tokenList, setTokenList] = useState([])
   const [connection, setConnection] = useState(new Connection(clusterApiUrl(GetClusterUrl(network))))
@@ -29,6 +28,7 @@ const Home = (props) => {
 
   useEffect(() => {
     const fetchToken = async () => {
+      const keypair = Secret2Keypair(SecretString2Secret(auth.secret))
       const tokens = await connection.getParsedTokenAccountsByOwner(keypair.publicKey, {
         programId: TOKEN_PROGRAM_ID,
       })
@@ -72,7 +72,7 @@ const Home = (props) => {
     }
 
     fetchToken()
-  }, [connection, keypair.publicKey]);
+  }, [connection, auth.secret]);
 
   const moveLeft = () => {
     dispatch(setIndex(tokenIndex - 1 < 0 ? tokenList.length - 1 : tokenIndex - 1))
