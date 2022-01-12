@@ -2,7 +2,7 @@ const HomeItem = (props) => {
     return (
         <div className={'item level' + props.level}>
             <div className="imageContainer">
-                <img className="image" src={props.metadata.img}/>
+                <img alt="" className="image" src={props.metadata.img}/>
             </div>
             <div className="textContainer text-center">
                 <p className="currency">{props.metadata.symbol}</p>

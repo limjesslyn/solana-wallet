@@ -13,7 +13,7 @@ const Sign = (props) => {
             <NavKanan>
                 <span className="flex item-start py-4 font-bold text-md pl-4 justify-center align-middle">{clusterNetwork}</span>
                 <DropdownCluster>
-                    <img tabIndex="0" className="btn bg-base-100 border-none hover:bg-base-100" src={dropdown} />
+                    <img alt="" tabIndex="0" className="btn bg-base-100 border-none hover:bg-base-100" src={dropdown} />
                 </DropdownCluster>
             </NavKanan>
         </div>

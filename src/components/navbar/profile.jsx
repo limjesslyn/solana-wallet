@@ -10,7 +10,7 @@ const Profile = ({ image, address, cluster }) => {
                     <div className='flex flex-col mr-2'>
                     {ShortenAddress(address)}<small>{cluster}</small>
                     </div>
-                    <img src={dropdownIcon} />
+                    <img alt='' src={dropdownIcon} />
                 </span>
             </DropdownCluster>
             <div className="w-12 h-12 bg-center justify bg-no-repeat bg-contain rounded-full" style={{ backgroundImage: `url("${image}")`, backgroundSize: "100% auto" }}>

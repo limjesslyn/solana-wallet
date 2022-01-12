@@ -27,48 +27,52 @@ const NFT = (props) => {
     setConnection(new Connection(clusterApiUrl(GetClusterUrl(network))))
   }, [network]);
 
-  useEffect(async () => {
-    const nfts = await connection.getParsedTokenAccountsByOwner(keypair.publicKey, {
-      programId: TOKEN_PROGRAM_ID,
-    })
+  useEffect(() => {
+    const fetchNft = async () => {
+      const nfts = await connection.getParsedTokenAccountsByOwner(keypair.publicKey, {
+        programId: TOKEN_PROGRAM_ID,
+      })
 
-    const nftAccounts = nfts.value.filter(({ account }) => {
-      const amount = account?.data?.parsed?.info?.tokenAmount?.uiAmount;
-      const decimals = account?.data?.parsed?.info?.tokenAmount?.decimals;
+      const nftAccounts = nfts.value.filter(({ account }) => {
+        const amount = account?.data?.parsed?.info?.tokenAmount?.uiAmount;
+        const decimals = account?.data?.parsed?.info?.tokenAmount?.decimals;
 
-      return decimals === 0 && amount > 0;
-    });
+        return decimals === 0 && amount > 0;
+      });
 
-    let nftItems = [];
-    for (let i = 0; i < nftAccounts.length; i++) {
-      const mint = nftAccounts[i]?.account?.data?.parsed?.info?.mint
-      const metadataPDA = await Metadata.getPDA(mint);
-      const tokenMetadata = await Metadata.load(connection, metadataPDA);
+      let nftItems = [];
+      for (let i = 0; i < nftAccounts.length; i++) {
+        const mint = nftAccounts[i]?.account?.data?.parsed?.info?.mint
+        const metadataPDA = await Metadata.getPDA(mint);
+        const tokenMetadata = await Metadata.load(connection, metadataPDA);
 
-      const alternateTokenMetadata = FindTokenFromSolanaTokenList(mint)
-      let imgURI = tokenMetadata.data.data.uri;
-      if (tokenMetadata.data.data.uri === "" || tokenMetadata.data.data.uri === null) {
-        imgURI = alternateTokenMetadata.logoURI
+        const alternateTokenMetadata = FindTokenFromSolanaTokenList(mint)
+        let imgURI = tokenMetadata.data.data.uri;
+        if (tokenMetadata.data.data.uri === "" || tokenMetadata.data.data.uri === null) {
+          imgURI = alternateTokenMetadata.logoURI
+        }
+
+        nftItems.push({
+          img: imgURI,
+          title: tokenMetadata.data.data.name,
+          desc: `Symbol: ${tokenMetadata.data.data.symbol}
+          <br>Address: ${mint}`
+        })
       }
 
-      nftItems.push({
-        img: imgURI,
-        title: tokenMetadata.data.data.name,
-        desc: `Symbol: ${tokenMetadata.data.data.symbol}
-        <br>Address: ${mint}`
-      })
-    }
-
-    if(nftItems.length > 0) {
-      let originalLength = nftItems.length;
-      while(nftItems.length < 5) {
-        for (let i = 0; i < originalLength; i++) {
-          nftItems.push(nftItems[i])
+      if (nftItems.length > 0) {
+        let originalLength = nftItems.length;
+        while (nftItems.length < 5) {
+          for (let i = 0; i < originalLength; i++) {
+            nftItems.push(nftItems[i])
+          }
         }
       }
+      setNftList(nftItems)
     }
-    setNftList(nftItems)
-  }, [connection]);
+
+    fetchNft()
+  }, [connection, keypair.publicKey]);
 
   const moveLeft = () => {
     dispatch(setIndex(nftIndex - 1 < 0 ? nftList.length - 1 : nftIndex - 1))
