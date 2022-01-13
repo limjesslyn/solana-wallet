@@ -6,8 +6,12 @@ import rightIcon from "../../resources/arrow-forward.svg"
 import sendIcon from "../../resources/send.svg";
 import saveIcon from "../../resources/save.svg";
 import SendModal from "./sendModal";
+import Snackbar from "../snackbar/snackbar"
+import { Secret2Keypair, SecretString2Secret } from "../../utils/wallet";
+import { useSelector } from "react-redux";
 
 const Footer = (props) => {
+    const auth = useSelector(state => state.auth);
     return (
         <div className="p-10 flex w-full absolute bottom-0">
             <FloatingItemButton onClick={() => {
@@ -20,8 +24,14 @@ const Footer = (props) => {
                 <FooterItem onClick={props.onClickPrevious} icon={leftIcon} />
                 <FooterItem onClick={props.onClickNext} icon={rightIcon} />
             </FooterBar>
-            <FloatingItemButton icon={saveIcon} />
+            <FloatingItemButton icon={saveIcon} onClick={() => {
+                navigator.clipboard.writeText(Secret2Keypair(SecretString2Secret(auth.secret)).publicKey.toBase58());
+                let snackbar = document.getElementById("snackbar");
+                snackbar.className = "show"
+                setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 2750)
+            }}/>
             <SendModal />
+            <Snackbar address={Secret2Keypair(SecretString2Secret(auth.secret)).publicKey.toBase58()}/>
         </div>
     )
 }
