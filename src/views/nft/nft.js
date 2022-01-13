@@ -12,6 +12,7 @@ import { GetClusterUrl } from '../../utils/cluster';
 import { Secret2Keypair, SecretString2Secret } from '../../utils/wallet';
 import { TOKEN_PROGRAM_ID } from '../../const';
 import { FindTokenFromSolanaTokenList } from '../../utils/token'
+import axios from "axios"
 
 const NFT = (props) => {
   const auth = useSelector(state => state.auth)
@@ -50,6 +51,11 @@ const NFT = (props) => {
         let imgURI = tokenMetadata.data.data.uri;
         if (tokenMetadata.data.data.uri === "" || tokenMetadata.data.data.uri === null) {
           imgURI = alternateTokenMetadata.logoURI
+        }
+
+        if(imgURI.indexOf("arweave") !== -1) {
+          const { data } = await axios.get(imgURI);
+          imgURI = data.image
         }
 
         nftItems.push({

@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/react-transition-group": "^4.4.4",
     "autoprefixer": "^9.8.6",
+    "axios": "^0.24.0",
     "bip39": "^3.0.4",
     "daisyui": "^1.20.1",
     "ed25519-hd-key": "^1.2.0",
