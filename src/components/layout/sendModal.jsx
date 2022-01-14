@@ -166,7 +166,7 @@ const SendModal = (props) => {
                                         <h2 className="card-title">Your transaction finished</h2>
                                         <p>
                                             Here's your link.<br />
-                                            <a target="_blank" className="link-primary underline" href={transactionLink}>{transactionLink}</a>
+                                            <a target="_blank" rel="noreferrer" className="link-primary underline" href={transactionLink}>{transactionLink}</a>
                                         </p>
                                         <button className="btn btn-outline shadow-lg btn-md btn-accent mx-auto" onClick={() => setTransactionLink("")}>Okay</button>
                                     </div>
