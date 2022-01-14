@@ -30,7 +30,11 @@
     transition: height 1s, box-shadow 1s, border-radius 1s, margin-top 1s, transform 1s;
 }
 
-.nftContainer:hover .hide{
+.nftContainer img {
+    transition: opacity 2s;
+}
+
+.nftContainer:hover:not(.flip) .hide{
     opacity: 1;
     transition: opacity 500ms;
 }

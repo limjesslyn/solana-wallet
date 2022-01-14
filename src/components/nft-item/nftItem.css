@@ -25,8 +25,17 @@
     transform: rotate3d(0, 1, 0, 180deg);
 }
 
+.backside {
+    display: none;
+}
+
+.flip .backside {
+    transform: rotate3d(0, 1, 0, 180deg);
+    display: block;
+}
+
 .flip img {
-    filter: grayscale(1) blur(10px);
+    opacity: 0.2;
 }
 
 span.light {

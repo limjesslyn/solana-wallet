@@ -13,8 +13,23 @@ const NFTItem = (props) => {
                     }
                 }
             }}>
+                <div className="w-full h-full p-3 transform-2 backside break-words">
+                    &#123;
+                    <div className="pl-4">
+                        <p>
+                            <span className="bg-gray-200 rounded-xl p-2">address</span>: {props.metadata.address}
+                        </p>
+                        <p className="mt-2">
+                            <span className="bg-gray-200 rounded-xl p-2">image</span>: {props.metadata.img}
+                        </p>
+                        <p className="mt-2">
+                            <span className="bg-gray-200 rounded-xl p-2">title</span>: {props.metadata.title}
+                        </p>
+                    </div>
+                    &#125;	
+                </div>
                 {props.level === 0 && <span className="light"></span>}
-                <img alt="" className="image" width="100%" src={props.metadata.img} />
+                <img alt="" className="image absolute" width="100%" src={props.metadata.img} />
                 <div className="detailsContainer hide">
                     <p className="title truncate">{props.metadata.title}</p>
                     <p className="description" dangerouslySetInnerHTML={{__html: props.metadata.desc}}></p>
