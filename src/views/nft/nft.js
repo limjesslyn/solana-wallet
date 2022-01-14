@@ -13,6 +13,7 @@ import { Secret2Keypair, SecretString2Secret } from '../../utils/wallet';
 import { TOKEN_PROGRAM_ID } from '../../const';
 import { FindTokenFromSolanaTokenList } from '../../utils/token'
 import axios from "axios"
+import { setCurrentToken } from '../../redux/slice/token';
 
 const NFT = (props) => {
   const auth = useSelector(state => state.auth)
@@ -29,6 +30,8 @@ const NFT = (props) => {
 
   useEffect(() => {
     const fetchNft = async () => {
+      dispatch(setCurrentToken(null))
+
       const keypair = Secret2Keypair(SecretString2Secret(auth.secret))
       const nfts = await connection.getParsedTokenAccountsByOwner(keypair.publicKey, {
         programId: TOKEN_PROGRAM_ID,
@@ -59,6 +62,8 @@ const NFT = (props) => {
         }
 
         nftItems.push({
+          address: mint,
+          decimals: nftAccounts[i]?.account?.data?.parsed?.info?.tokenAmount?.decimals,
           img: imgURI,
           title: tokenMetadata.data.data.name,
           desc: `Symbol: ${tokenMetadata.data.data.symbol}
@@ -74,6 +79,7 @@ const NFT = (props) => {
             nftItems.push(nftItems[i])
           }
         }
+        dispatch(setCurrentToken(nftItems[0]))
       }
       setNftList(nftItems)
     }
@@ -82,11 +88,15 @@ const NFT = (props) => {
   }, [connection, auth.secret]);
 
   const moveLeft = () => {
-    dispatch(setIndex(nftIndex - 1 < 0 ? nftList.length - 1 : nftIndex - 1))
+    const newIndex = nftIndex - 1 < 0 ? nftList.length - 1 : nftIndex - 1
+    dispatch(setIndex(newIndex))
+    dispatch(setCurrentToken(nftList[newIndex]))
   }
 
   const moveRight = () => {
-    dispatch(setIndex((nftIndex + 1) % nftList.length))
+    const newIndex = (nftIndex + 1) % nftList.length
+    dispatch(setIndex(newIndex))
+    dispatch(setCurrentToken(nftList[newIndex]))
   }
 
   const NoNFT = () => {

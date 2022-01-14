@@ -12,12 +12,16 @@ import { useSelector } from "react-redux";
 
 const Footer = (props) => {
     const auth = useSelector(state => state.auth);
+    const token = useSelector(state => state.token)
+
     return (
         <div className="p-10 flex w-full absolute bottom-0">
             <FloatingItemButton onClick={() => {
-                let modal = document.getElementById("modal");
-                if (!modal.classList.contains("modal-open")) {
-                    modal.classList.add("modal-open");
+                if(token.currentToken !== null) {
+                    let modal = document.getElementById("modal");
+                    if (!modal.classList.contains("modal-open")) {
+                        modal.classList.add("modal-open");
+                    }
                 }
             }} icon={sendIcon} />
             <FooterBar>
