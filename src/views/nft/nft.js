@@ -67,8 +67,7 @@ const NFT = (props) => {
           img: imgURI,
           title: tokenMetadata.data.data.name,
           desc: `Symbol: ${tokenMetadata.data.data.symbol}
-          <br>Address: ${mint}
-          <br>Amount: ${nftAccounts[i]?.account?.data?.parsed?.info?.tokenAmount?.uiAmount}`
+          <br>Address: ${mint}`
         })
       }
 
@@ -91,12 +90,21 @@ const NFT = (props) => {
     const newIndex = nftIndex - 1 < 0 ? nftList.length - 1 : nftIndex - 1
     dispatch(setIndex(newIndex))
     dispatch(setCurrentToken(nftList[newIndex]))
+    clearFlipped()
   }
 
   const moveRight = () => {
     const newIndex = (nftIndex + 1) % nftList.length
     dispatch(setIndex(newIndex))
     dispatch(setCurrentToken(nftList[newIndex]))
+    clearFlipped()
+  }
+
+  const clearFlipped = () => {
+    const flipped = document.getElementsByClassName("flip")
+    for(let i = 0; i < flipped.length; i++) {
+      flipped[i].classList.remove("flip")
+    }
   }
 
   const NoNFT = () => {

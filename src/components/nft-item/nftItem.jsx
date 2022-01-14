@@ -17,7 +17,7 @@ const NFTItem = (props) => {
                 <img alt="" className="image" width="100%" src={props.metadata.img} />
                 <div className="detailsContainer hide">
                     <p className="title truncate">{props.metadata.title}</p>
-                    <p className="description truncate" dangerouslySetInnerHTML={{__html: props.metadata.desc}}></p>
+                    <p className="description" dangerouslySetInnerHTML={{__html: props.metadata.desc}}></p>
                 </div>
             </div>
         </div>
