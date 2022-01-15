@@ -26,73 +26,73 @@ const Home = (props) => {
     setConnection(new Connection(clusterApiUrl(GetClusterUrl(network))))
   }, [network]);
 
-  useEffect(() => {
-    const fetchToken = async () => {
-      dispatch(setCurrentToken(null))
+  const fetchToken = async () => {
+    dispatch(setCurrentToken(null))
 
-      const keypair = Secret2Keypair(SecretString2Secret(auth.secret))
-      const tokens = await connection.getParsedTokenAccountsByOwner(keypair.publicKey, {
-        programId: TOKEN_PROGRAM_ID,
-      })
+    const keypair = Secret2Keypair(SecretString2Secret(auth.secret))
+    const tokens = await connection.getParsedTokenAccountsByOwner(keypair.publicKey, {
+      programId: TOKEN_PROGRAM_ID,
+    })
 
-      const tokenAccounts = tokens.value.filter(({ account }) => {
-        const amount = account?.data?.parsed?.info?.tokenAmount?.uiAmount;
-        const decimals = account?.data?.parsed?.info?.tokenAmount?.decimals;
+    const tokenAccounts = tokens.value.filter(({ account }) => {
+      const amount = account?.data?.parsed?.info?.tokenAmount?.uiAmount;
+      const decimals = account?.data?.parsed?.info?.tokenAmount?.decimals;
 
-        return decimals > 0 && amount > 0;
-      });
+      return decimals > 0 && amount > 0;
+    });
 
-      let tokenItems = [];
-      for (let i = 0; i < tokenAccounts.length; i++) {
-        const mint = tokenAccounts[i]?.account?.data?.parsed?.info?.mint
-        let metadataPDA;
-        let tokenMetadata;
-        try {
-          metadataPDA = await Metadata.getPDA(mint);
-          tokenMetadata = await Metadata.load(connection, metadataPDA);
-        } catch(_) {
-          console.log("Failed to catch error")
-        }
-
-        const alternateTokenMetadata = FindTokenFromSolanaTokenList(mint)
-        let imgURI = tokenMetadata?.data?.data?.uri;
-        if (tokenMetadata?.data?.data?.uri === "" || tokenMetadata?.data?.data?.uri === null) {
-          imgURI = alternateTokenMetadata.logoURI
-        }
-
-        tokenItems.push({
-          address: mint,
-          decimals: tokenAccounts[i]?.account?.data?.parsed?.info?.tokenAmount?.decimals,
-          img: imgURI,
-          title: tokenMetadata?.data?.data?.name,
-          symbol: tokenMetadata?.data?.data?.symbol,
-          balance: tokenAccounts[i]?.account?.data?.parsed?.info?.tokenAmount?.uiAmount
-        })
+    let tokenItems = [];
+    for (let i = 0; i < tokenAccounts.length; i++) {
+      const mint = tokenAccounts[i]?.account?.data?.parsed?.info?.mint
+      let metadataPDA;
+      let tokenMetadata;
+      try {
+        metadataPDA = await Metadata.getPDA(mint);
+        tokenMetadata = await Metadata.load(connection, metadataPDA);
+      } catch(_) {
+        console.log("Failed to catch error")
       }
 
-      const sol = await connection.getBalance(keypair.publicKey);
+      const alternateTokenMetadata = FindTokenFromSolanaTokenList(mint)
+      let imgURI = tokenMetadata?.data?.data?.uri;
+      if (tokenMetadata?.data?.data?.uri === "" || tokenMetadata?.data?.data?.uri === null) {
+        imgURI = alternateTokenMetadata.logoURI
+      }
+
       tokenItems.push({
-        address: "NATIVE",
-        decimals: 9,
-        img: "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png",
-        title: "Solana",
-        symbol: "SOL",
-        balance: sol / 1e9,
+        address: mint,
+        decimals: tokenAccounts[i]?.account?.data?.parsed?.info?.tokenAmount?.decimals,
+        img: imgURI,
+        title: tokenMetadata?.data?.data?.name,
+        symbol: tokenMetadata?.data?.data?.symbol,
+        balance: tokenAccounts[i]?.account?.data?.parsed?.info?.tokenAmount?.uiAmount
       })
-
-      if (tokenItems.length > 0) {
-        let originalLength = tokenItems.length;
-        while (tokenItems.length <= 5) {
-          for (let i = 0; i < originalLength; i++) {
-            tokenItems.push(tokenItems[i])
-          }
-        }
-
-        dispatch(setCurrentToken(tokenItems[0]))
-      }
-      setTokenList(tokenItems)
     }
 
+    const sol = await connection.getBalance(keypair.publicKey);
+    tokenItems.push({
+      address: "NATIVE",
+      decimals: 9,
+      img: "https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png",
+      title: "Solana",
+      symbol: "SOL",
+      balance: sol / 1e9,
+    })
+
+    if (tokenItems.length > 0) {
+      let originalLength = tokenItems.length;
+      while (tokenItems.length <= 5) {
+        for (let i = 0; i < originalLength; i++) {
+          tokenItems.push(tokenItems[i])
+        }
+      }
+
+      dispatch(setCurrentToken(tokenItems[0]))
+    }
+    setTokenList(tokenItems)
+  }
+
+  useEffect(() => {
     fetchToken()
   }, [connection, auth.secret]);
 
@@ -124,7 +124,7 @@ const Home = (props) => {
           (tokenList.length === 0) ? <NoToken /> : <Carousel active={tokenIndex} direction="left" elementName={'HomeItem'} items={tokenList} />
         }
       </CarouselContainer>
-      <Footer onClickPrevious={moveLeft} onClickNext={moveRight} />
+      <Footer onClickPrevious={moveLeft} onClickNext={moveRight} refreshItem={fetchToken} />
     </div>
   );
 }

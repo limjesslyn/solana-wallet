@@ -33,7 +33,7 @@ const SendModal = (props) => {
     }, [token])
 
     const process = async () => {
-        if (token.currentToken === {}) {
+        if (token.currentToken === null) {
             alert("No selected token")
             return
         }
@@ -121,6 +121,7 @@ const SendModal = (props) => {
                 sendBtn.classList.remove("loading");
             }
         }
+        props?.refreshItem()
     }
 
     return (

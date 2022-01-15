@@ -34,7 +34,7 @@ const Footer = (props) => {
                 snackbar.className = "show"
                 setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 2750)
             }}/>
-            <SendModal />
+            <SendModal refreshItem={props.refreshItem} />
             <Snackbar address={Secret2Keypair(SecretString2Secret(auth.secret)).publicKey.toBase58()}/>
         </div>
     )

@@ -28,60 +28,60 @@ const NFT = (props) => {
     setConnection(new Connection(clusterApiUrl(GetClusterUrl(network))))
   }, [network]);
 
-  useEffect(() => {
-    const fetchNft = async () => {
-      dispatch(setCurrentToken(null))
+  const fetchNft = async () => {
+    dispatch(setCurrentToken(null))
 
-      const keypair = Secret2Keypair(SecretString2Secret(auth.secret))
-      const nfts = await connection.getParsedTokenAccountsByOwner(keypair.publicKey, {
-        programId: TOKEN_PROGRAM_ID,
+    const keypair = Secret2Keypair(SecretString2Secret(auth.secret))
+    const nfts = await connection.getParsedTokenAccountsByOwner(keypair.publicKey, {
+      programId: TOKEN_PROGRAM_ID,
+    })
+
+    const nftAccounts = nfts.value.filter(({ account }) => {
+      const amount = account?.data?.parsed?.info?.tokenAmount?.uiAmount;
+      const decimals = account?.data?.parsed?.info?.tokenAmount?.decimals;
+
+      return decimals === 0 && amount > 0;
+    });
+
+    let nftItems = [];
+    for (let i = 0; i < nftAccounts.length; i++) {
+      const mint = nftAccounts[i]?.account?.data?.parsed?.info?.mint
+      const metadataPDA = await Metadata.getPDA(mint);
+      const tokenMetadata = await Metadata.load(connection, metadataPDA);
+
+      const alternateTokenMetadata = FindTokenFromSolanaTokenList(mint)
+      let imgURI = tokenMetadata.data.data.uri;
+      if (tokenMetadata.data.data.uri === "" || tokenMetadata.data.data.uri === null) {
+        imgURI = alternateTokenMetadata.logoURI
+      }
+
+      if(imgURI.indexOf("arweave") !== -1) {
+        const { data } = await axios.get(imgURI);
+        imgURI = data.image
+      }
+
+      nftItems.push({
+        address: mint,
+        decimals: nftAccounts[i]?.account?.data?.parsed?.info?.tokenAmount?.decimals,
+        img: imgURI,
+        title: tokenMetadata.data.data.name,
+        desc: `Symbol: ${tokenMetadata.data.data.symbol}`
       })
-
-      const nftAccounts = nfts.value.filter(({ account }) => {
-        const amount = account?.data?.parsed?.info?.tokenAmount?.uiAmount;
-        const decimals = account?.data?.parsed?.info?.tokenAmount?.decimals;
-
-        return decimals === 0 && amount > 0;
-      });
-
-      let nftItems = [];
-      for (let i = 0; i < nftAccounts.length; i++) {
-        const mint = nftAccounts[i]?.account?.data?.parsed?.info?.mint
-        const metadataPDA = await Metadata.getPDA(mint);
-        const tokenMetadata = await Metadata.load(connection, metadataPDA);
-
-        const alternateTokenMetadata = FindTokenFromSolanaTokenList(mint)
-        let imgURI = tokenMetadata.data.data.uri;
-        if (tokenMetadata.data.data.uri === "" || tokenMetadata.data.data.uri === null) {
-          imgURI = alternateTokenMetadata.logoURI
-        }
-
-        if(imgURI.indexOf("arweave") !== -1) {
-          const { data } = await axios.get(imgURI);
-          imgURI = data.image
-        }
-
-        nftItems.push({
-          address: mint,
-          decimals: nftAccounts[i]?.account?.data?.parsed?.info?.tokenAmount?.decimals,
-          img: imgURI,
-          title: tokenMetadata.data.data.name,
-          desc: `Symbol: ${tokenMetadata.data.data.symbol}`
-        })
-      }
-
-      if (nftItems.length > 0) {
-        let originalLength = nftItems.length;
-        while (nftItems.length <= 5) {
-          for (let i = 0; i < originalLength; i++) {
-            nftItems.push(nftItems[i])
-          }
-        }
-        dispatch(setCurrentToken(nftItems[0]))
-      }
-      setNftList(nftItems)
     }
 
+    if (nftItems.length > 0) {
+      let originalLength = nftItems.length;
+      while (nftItems.length <= 5) {
+        for (let i = 0; i < originalLength; i++) {
+          nftItems.push(nftItems[i])
+        }
+      }
+      dispatch(setCurrentToken(nftItems[0]))
+    }
+    setNftList(nftItems)
+  }
+
+  useEffect(() => {
     fetchNft()
   }, [connection, auth.secret]);
 
@@ -122,7 +122,7 @@ const NFT = (props) => {
           (nftList.length === 0) ? <NoNFT /> : <Carousel active={nftIndex} direction="left" elementName={'NFTItem'} items={nftList} />
         }
       </CarouselContainer>
-      <Footer onClickPrevious={moveLeft} onClickNext={moveRight} />
+      <Footer onClickPrevious={moveLeft} refreshItem={fetchNft} onClickNext={moveRight} />
     </div>
   );
 }
