@@ -1,40 +1,48 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { setLogin, setPhrase as setAuthPhrase } from "../../redux/slice/auth"
+import { setLogin, setSecret as setAuthSecret } from "../../redux/slice/auth"
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { Keypair } from "@solana/web3.js";
+import * as bip39 from "bip39";
+import { derivePath } from "ed25519-hd-key";
 
 const SigninFoot = (props) => {
-    const auth = useSelector(state => state.auth);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const eventSubmit = async (e) => {
-        localStorage.setItem("phrase", phrase);
-        dispatch(setAuthPhrase(phrase))
+    const eventSubmit = (e) => {
+        e.preventDefault();
+
+        // m/44'/501'/0'/0'
+        const seed = bip39.mnemonicToSeedSync(mnemonic, "");
+        const path = `m/44'/501'/0'/0'`;
+        let keypair = Keypair.fromSeed(derivePath(path, seed.toString("hex")).key);
+
+        localStorage.setItem("secret", keypair.secretKey.toString());
+        dispatch(setAuthSecret(keypair.secretKey.toString()))
         dispatch(setLogin(true))
         navigate("/", {
             replace: true
         })
-        e.preventDefault();
     }
 
-    const [phrase, setPhrase] = useState("");
-    const eventOnChangePhrase = (e) => {
-        setPhrase(e.target.value)
+    const [mnemonic, setMnemonic] = useState("");
+    const eventOnChangeMnemonic = (e) => {
+        setMnemonic(e.target.value)
     }
 
     return (
         <form onSubmit={eventSubmit}>
             <textarea
-                id="phrase"
-                defaultValue={phrase}
-                placeholder="Phrase..."
+                id="mnemonic"
+                defaultValue={mnemonic}
+                placeholder="Mnemonic phrase..."
                 rows={6}
-                onChange={eventOnChangePhrase}
-                className="p-5 w-4/12 text-gray-500 resize-none outline-0 rounded-xl bg-white flex mt-10 mx-auto"
+                onChange={eventOnChangeMnemonic}
+                className="p-5 w-4/12 text-gray-500 resize-none outline-none rounded-xl bg-white flex mt-10 mx-auto"
                 style={{ boxShadow: 'inset -3px 4px 9px rgb(0 0 0 / 0.15)' }}></textarea>
-            <button type="submit" className="btn flex mx-auto normal-case btn-secondary">Connect</button>
+            <button t y pe="submit" className="btn flex mx-auto normal-case bt
+n-secondary" >Connect</button>
         </form>
     )
 }

@@ -9,7 +9,7 @@ const Signcontent = (props) => {
                 <p>With the help of blockchain you can store your assets without telling your personal data. All you need is just set up your wallet</p>
             </ContentText>
             <Content>
-                <img className="max-w-md" src={Eth} />
+                <img alt="" className="max-w-md" src={Eth} />
             </Content>
         </div>
 

@@ -27,10 +27,14 @@
 }
 
 .nftContainer{
-    transition: height 1s, box-shadow 1s, border-radius 1s, margin-top 1s;
+    transition: height 1s, box-shadow 1s, border-radius 1s, margin-top 1s, transform 1s;
 }
 
-.nftContainer:hover .hide{
+.nftContainer img {
+    transition: opacity 2s;
+}
+
+.nftContainer:hover:not(.flip) .hide{
     opacity: 1;
     transition: opacity 500ms;
 }
@@ -48,7 +52,6 @@
 
 .nftLevel0 .nftContainer {
     background-color: rgb(255 255 255);
-    box-shadow: 2px 4px 25px 0 rgb(208 75 255 / 1);
     z-index: 0;
     height: 22rem;
     position: relative;
@@ -56,8 +59,8 @@
 }
 
 .nftLevel0 .nftContainer .image {
-    position: absolute;
     border-radius: 1rem;
+    filter: drop-shadow(2px 5px 30px rgba(208, 75, 255, 30%));
 }
 
 .nftLevel0 .nftContainer .detailsContainer {
@@ -94,15 +97,6 @@
     position: relative;
 }
 
-
-
-
-
-
-
-
-
-
 .nftLevel1 {
     width: 16.5rem;
     height: 16.5rem;
@@ -115,8 +109,6 @@
 }
 
 .nftLevel1 .nftContainer {
-    background-color: rgb(255 255 255);
-    box-shadow: 2px 4px 20px 0 rgb(0 0 0 / 0.25);
     z-index: 0;
     height: 16.5rem;
     position: relative;
@@ -124,7 +116,6 @@
 }
 
 .nftLevel1 .nftContainer .image {
-    position: absolute;
     border-radius: 0.75rem;
 }
 
@@ -177,8 +168,6 @@
 }
 
 .nftLevel2 .nftContainer {
-    background-color: rgb(255 255 255);
-    box-shadow: 2px 4px 20px 0 rgb(0 0 0 / 0.25);
     z-index: 0;
     height: 11rem;
     position: relative;
@@ -241,8 +230,6 @@
 }
 
 .nftLevel-1 .nftContainer {
-    background-color: rgb(255 255 255);
-    box-shadow: 2px 4px 20px 0 rgb(0 0 0 / 0.25);
     z-index: 0;
     height: 16.5rem;
     position: relative;
@@ -306,8 +293,6 @@
 }
 
 .nftLevel-2 .nftContainer {
-    background-color: rgb(255 255 255);
-    box-shadow: 2px 4px 20px 0 rgb(0 0 0 / 0.25);
     z-index: 0;
     height: 11rem;
     position: relative;
@@ -315,7 +300,6 @@
 }
 
 .nftLevel-2 .nftContainer .image {
-    position: absolute;
     border-radius: 0.5rem;
 }
 

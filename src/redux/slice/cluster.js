@@ -4,7 +4,7 @@ import { ClustersNetwork } from '../../const';
 export const clusterSlice = createSlice({
     name: 'cluster',
     initialState: {
-        network: ClustersNetwork[0]
+        network: localStorage.getItem("cluster") === null ? ClustersNetwork[0] : localStorage.getItem("cluster")
     },
     reducers: {
         setCluster: (state, action) => {
