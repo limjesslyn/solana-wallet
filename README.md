@@ -8,7 +8,7 @@ There are 3 types of network which is Mainnet, Devnet and Testnet.
 ### To Sign-in
 Connect your wallet to us. Please input the Mnmonic phrase of your wallet and then click the button **Connect**. The home page will be visible once your sign-in is successful.
 The homepage contains your wallet coins, to go to NFT collections, you can simply navigate the _collectibles_ in the top navigation bar.
-- For Coins, your coins and balance will be shown directly in the homepage after successfull sign-in
+- For Coins, your coins and balance will be shown directly in the homepage after successful sign-in
 - For Collectibles, hover the NFT to show the NFT symbol and click the NFT to show the details of the NFT
 
 ### To Send
