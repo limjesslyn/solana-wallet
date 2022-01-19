@@ -19,4 +19,7 @@ Click the send icon located in the bottom-left of the page. There are some infor
 ### To Receive
 Click the receive icon located in the bottom-right of the page to copy your wallet address to your clipboard. If successful, a pop up will be shown that the address of your wallet have been saved to your clipboard.
 
+### To Sign-out
+Click the Sign-out option in the top navigation bar. Your sign-out is successful if your screen has change back to sign-in page.
+
 ***
